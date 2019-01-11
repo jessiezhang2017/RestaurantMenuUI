@@ -25,24 +25,23 @@ class App extends Component {
     this.logout = this.logout.bind(this);
   }
 
-
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(e);
+    console.log(this.state);
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
-    console.log('test');
-    console.log(event.currentTarget);
-    const url = 'https://localhose8080/restaurants/cuisine/';
 
-    console.log(this.state.cuisine);
-    const encodedQuery = encodeURIComponent(this.state.cuisine);
-    console.log("try"+encodedQuery);
+    const url = 'http://localhost8080/restaurants/cuisine/';
 
-    axios.get(url+encodedQuery)
+    const encoded = encodeURIComponent(this.state.cuisine);
+    console.log("try"+encoded);
+
+    axios.get(url+encoded)
 
      .then((response)=>{
        this.setState({
@@ -120,7 +119,7 @@ class App extends Component {
           <div className='container'>
             <section className='search-list'>
               <form onSubmit={this.handleSubmit}>
-                <select type="text" name="cuisine" onChange={this.handleChange} >
+                <select type="text" name="cuisine" value={this.state.cuisine} onChange={this.handleChange} >
                   <option value="">NA</option>
                   <option value="152">Africa</option>
                   <option value="1">America</option>
@@ -163,7 +162,7 @@ class App extends Component {
                   <option value="99">Vietnamese</option>
                   <option value="308">Vegetarian</option>
                 </select>
-                <button>Search</button>
+                <input type="submit" value="submit" className="btn btn-success new-rental-form--submit"/>
               </form>
             </section>
            </div>
