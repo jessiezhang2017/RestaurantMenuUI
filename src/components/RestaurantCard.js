@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RestaurantCard.css';
@@ -7,33 +8,23 @@ import './RestaurantCard.css';
 
 
 const RestaurantCard = (props) => {
-  const { id, name, photoUrl, webUrl } = props;
+  const { id, name, photo, location, overall_rating, menuUrl } = props;
+
+
   return (
     <div className="card restaurant-card">
 
-      <section className="restaurant-card--header">
-      <button
-        onClick={() => props.deleteRestaurantCallback(props.id)}
-        type="button"
-        className="close restaurant-card--close-btn"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-      { speciesEmoji(species) } {id} - {name}
-        <button
-          onClick={() => {props.selectRestaurantCallback(props.id)}}
-          className="btn btn-primary restaurant-card--select-restaurant-btn"
-          >
-            Select
-        </button>
+     <section className="restaurant-card--img">
+      <img src={photo} alt="food_post"/>
+     </section>
+
+      <section className="restaurant-card--details">
+        <p><strong>Restaurant Name: {name}</strong></p>
+        <p>Location: {location}</p>
+        <p>User rating: {overall_rating}</p>
+        <a rel="noopener noreferrer" href={menuUrl} target="_blank">Menu</a>
       </section>
-      <section className="restaurant-card--body">
-        { about.length > 128 ? `${about.substring(0, 128)}...` : about}
-      </section>
-      <section className="pet-card--footer text-muted">
-        // {location}
-      </section>
+
     </div>
   );
 };
