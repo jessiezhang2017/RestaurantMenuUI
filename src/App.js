@@ -13,55 +13,14 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      // restaurantName: '',
-      // dishName:'',
-      // comment:'',
-      // username: '',
+
       user: null,
-      // cuisine:'',
-      // restaurantSearchResult: []
 
     }
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
-
-  // handleChange (e){
-  //
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   });
-  //   console.log(e);
-  //   console.log(this.state);
-  // }
-  //
-  // handleSubmit (event) {
-  //   event.preventDefault();
-  //
-  //   const url = 'http://localhost:8080/restaurants/cuisine/';
-  //
-  //   const encoded = encodeURIComponent(this.state.cuisine);
-  //   console.log("try"+encoded);
-  //   console.log(url+encoded);
-  //
-  //   axios.get(url+encoded)
-  //    .then((response)=>{
-  //      console.log("jessie");
-  //      console.log(response.data);
-  //      this.setState({
-  //        restaurantSearchResult: response.data,
-  //        cuisine:"",
-  //      });
-  //    })
-  //    .catch((error)=>{
-  //      this.setState({
-  //        errorMessage: error.message,
-  //      });
-  //    });
-  //
-  // }
 
   logout() {
     auth.signOut()
@@ -94,20 +53,6 @@ class App extends Component {
 
   render() {
 
-    // const resultList = this.state.restaurantSearchResult.map((restaurant)=>{
-    //
-    // return <RestaurantCard
-    //   key = {restaurant.id}
-    //   id = {restaurant.id}
-    //   name = {restaurant.name}
-    //   photo = {restaurant.thumb}
-    //   location = {restaurant.location.address}
-    //   overall_rating = {restaurant.user_rating.aggregate_rating}
-    //   menuUrl = {restaurant.menu_url}
-      // addLibraryCallback={()=>this.addToLibrary(movie)}
-      // addLibraryCallback={this.addLibraryCallback}
-  //   />
-  // });
 
     return (
 
@@ -157,11 +102,7 @@ class App extends Component {
              <
               SearchForm
               user={this.state.user}
-              // userUid={this.state.user? this.state.user.uid:''}
-              // cuisine={this.state.cuisine}
-              // searchResults={this.state.restaurantSeachResult}
-              // handleChangeCallback={this.handleChange}
-              // handleSubmitCallback={this.handleSubmit}
+
               />
             }
           />

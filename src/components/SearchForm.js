@@ -74,9 +74,8 @@ class SearchForm extends Component {
   });
 
     return (
-      <div className='container'>
-        <section className='search-list'>
-
+      <div className='search'>
+        <section className='container'>
           <form className="form-group" onSubmit={this.handleSubmit}>
             <p>
               <select type="text" className="form-control selcls" name="cuisine" value={this.cuisine} onChange={this.handleChange} >
@@ -130,17 +129,13 @@ class SearchForm extends Component {
         {resultList}
       </section>
     </div>
-
     );
   }
 }
 
 SearchForm.propTypes = {
-  userUid: PropTypes.number.isRequired,
+  uid: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
-  // cuisine: PropTypes.string.isRequired,
-  // searchResults: PropTypes.array.isRequired,
-  // handleChangeCallback: PropTypes.func.isRequired,
-  // handleSubmitCallback: PropTypes.func.isRequired,
+
 }
 export default SearchForm;
