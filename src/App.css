@@ -18,10 +18,6 @@
   color: black;
 }
 
-/* .App-link { */
-  /* color: #61dafb; */
-
-/* } */
 
 @keyframes App-logo-spin {
   from {
@@ -79,10 +75,6 @@ header i {
   padding-top: 30px;
 }
 
-.wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-}
 
 .add-item {
   border-radius: 2px;
@@ -125,7 +117,6 @@ input {
 
 ul {
   display: flex;
-  flex-wrap: wrap;
   margin: 0;
   padding: 0;
 }
