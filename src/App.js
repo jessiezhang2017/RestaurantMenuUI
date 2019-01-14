@@ -52,7 +52,12 @@ class App extends Component {
 
 
   render() {
-
+    let uid;
+    let username;
+    if (this.state.user != null) {
+      uid = this.state.user.uid;
+      username = this.state.user.displayName;
+    }
 
     return (
 
@@ -76,6 +81,15 @@ class App extends Component {
                     <li></li>
                     }
                 </ul>
+                {this.state.user ?
+                  <div className='user-profile'>
+                      <img src={this.state.user.photoURL} alt='user'/>
+                  </div>
+                  :
+                  <div>
+                    <p></p>
+                  </div>
+                  }
 
                 {this.state.user ?
                  <button onClick={this.logout}>Log Out</button>
@@ -84,33 +98,23 @@ class App extends Component {
                   }
               </div>
           </header>
-          <div >
-            {this.state.user ?
-              <div className='user-profile'>
-                  <img src={this.state.user.photoURL} alt='user'/>
-              </div>
-              :
-              <div>
-                <p></p>
-              </div>
-              }
-          </div>
 
           <Route path="/" exact component={Home} />
 
           <Route path="/search/" render={()=>
              <
               SearchForm
-              user={this.state.user}
-
+              uid={uid}
+              username={username}
               />
             }
           />
           <Route path="/dashboard/" render={()=>
             <
              ReviewList
-             // customers={this.state.customers}
-             // selectCustomerCallback={this.selectCustomer}
+             uid={uid}
+             username={username}
+
             />
            }
           />

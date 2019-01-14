@@ -8,7 +8,7 @@ import './RestaurantCard.css';
 
 
 const RestaurantCard = (props) => {
-  const { id, name, photo, location, overall_rating, menuUrl } = props;
+  const { id, name, photo, location, overallRating, menuUrl } = props;
 
 
   return (
@@ -21,7 +21,7 @@ const RestaurantCard = (props) => {
       <section className="restaurant-card--details">
         <p><strong>Restaurant Name: {name}</strong></p>
         <p>Location: {location}</p>
-        <p>User rating: {overall_rating}</p>
+        <p>User rating: {overallRating}</p>
         <a rel="noopener noreferrer" href={menuUrl} target="_blank">Menu</a>
       </section>
 
@@ -32,9 +32,10 @@ const RestaurantCard = (props) => {
 RestaurantCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  photUrl: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
   menuUrl: PropTypes.string,
-  // location: PropTypes.string,
+  overall_raing: PropTypes.number.isRequired,
+  location: PropTypes.string,
   // deletePetCallback: PropTypes.func.isRequired,
   // selectPetCallback: PropTypes.func.isRequired,
 }

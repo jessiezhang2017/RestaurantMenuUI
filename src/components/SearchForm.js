@@ -12,9 +12,6 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurantName: '',
-      dishName:'',
-      comment:'',
       user: props.user,
       cuisine:'',
       restaurantSearchResult: []
@@ -24,21 +21,19 @@ class SearchForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange (e){
+  handleChange = (e)=>{
 
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     const url = 'http://localhost:8080/restaurants/cuisine/';
 
     const encoded = encodeURIComponent(this.state.cuisine);
-    console.log("try"+encoded);
-    console.log(url+encoded);
 
     axios.get(url+encoded)
      .then((response)=>{
@@ -56,9 +51,33 @@ class SearchForm extends Component {
 
   }
 
+  getMenus = (menuId) => {
+    const url = 'http://localhost:8080/menus/';
+    const encoded = encodeURIComponent(menuId);
+    let result = [];
+
+    axios.get(url+encoded)
+     .then((response)=>{
+
+       this.setState({
+         restaurantSearchResult: response.data,
+         cuisine:"",
+       });
+     })
+     .catch((error)=>{
+       this.setState({
+         errorMessage: error.message,
+       });
+     });
+
+
+  }
+
   render() {
 
     const resultList = this.state.restaurantSearchResult.map((restaurant)=>{
+
+
 
     return <RestaurantCard
       key = {restaurant.id}
@@ -66,7 +85,7 @@ class SearchForm extends Component {
       name = {restaurant.name}
       photo = {restaurant.thumb}
       location = {restaurant.location.address}
-      overall_rating = {restaurant.user_rating.aggregate_rating}
+      overallRating = {restaurant.user_rating.aggregate_rating}
       menuUrl = {restaurant.menu_url}
       // addLibraryCallback={()=>this.addToLibrary(movie)}
       // addLibraryCallback={this.addLibraryCallback}
@@ -135,7 +154,7 @@ class SearchForm extends Component {
 
 SearchForm.propTypes = {
   uid: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
 
 }
 export default SearchForm;
