@@ -6,6 +6,8 @@ import './ReviewList.css';
 
 
 const URL = 'http://www.localhost:8080/reviews/users/';
+const URL2 = 'http://www.localhost:8080/reviews/';
+
 
 class ReviewList extends Component {
   constructor(props) {
@@ -17,8 +19,8 @@ class ReviewList extends Component {
       currentReview: undefined,
 
     }
-    // this.deleteReview = this.deleteReview.bind(this);
-    // this.editReview = this.editReview.bind(this);
+    this.deleteReview = this.deleteReview.bind(this);
+    this.editReview = this.editReview.bind(this);
   }
 
   componentDidMount(){
@@ -72,101 +74,65 @@ class ReviewList extends Component {
     }
   }
 
-  // getReviewList(){
-  //    if(this.state.user) {
-  //      const url = 'http://www.localhost:8080/reviews/users/';
-  //      const encoded = encodeURIComponent(this.state.user.uid);
-  //
-  //      axios.get(url+encoded)
-  //      .then((response) =>{
-  //
-  //        this.setState({
-  //          reviewList: response.data,
-  //          masterList: response.data
-  //        });
-  //
-  //      })
-  //      .catch((error) => {
-  //        console.log(error.message);
-  //        this.setState({
-  //          errorMessage: error.message,
-  //        })
-  //      })
-  //   }
-  //  }
+  editReview = (reviewId) => {
 
 
 
+  }
 
-  // deleteReview = (reviewId) => {
-  //   let deleteIndex = -1;
-  //   const reviews =[...this.state.masterList];
-  //
-  //   reviews.forEach((review, index) => {
-  //     if (reviewId === review.id) {
-  //       deleteIndex = index;
-  //     }
-  //   });
-  //
-  //   reviews.splice(deleteIndex, 1);
-  //
-  //   this.setState({
-  //     reviewList: reviews,
-  //
-  //   })
+
+
+  deleteReview = (reviewId) => {
+    let deleteIndex = -1;
+    const reviews =[...this.state.masterList];
+
+    reviews.forEach((review, index) => {
+      if (reviewId === review.id) {
+        deleteIndex = index;
+      }
+    });
+
+    reviews.splice(deleteIndex, 1);
+
+    this.setState({
+      reviewList: reviews,
+    })
+
+
+
+    axios.delete(URL2+reviewId)
+
+    .then((response)=>{
+      console.log("delete completed");
+      console.log(reviewId);
+    })
+    .catch((error)=>{
+      this.setState({
+        errorMessage: error.message,
+      });
+    });
+
+  }
 
 
 
   render() {
     const reviewList = this.state.reviewList.map((review) => {
       return <ReviewCard key={review.id}
-               deleteReviewCallback={this.deleteReviewCallback}
-               editReviewCallback={this.editReviewCallback}
+               deleteReviewCallback={this.deleteReview}
+               editReviewCallback={this.editReview}
                {...review} />
     });
 
     return (
-      <div className="card-group">
+      <div className="reviewlist">
+        <h3 className="review-title">Reviews</h3>
         {reviewList}
       </div>
     );
   }
 }
 
-// const ReviewList = (props) => {
-//   const { user, reviews } = props;
-//
-//
-//     if(user) {
-//       if(reviews === []){
-//         return (
-//           <div className="card-group">
-//               <p>No reviews</p>
-//           </div>
-//         )
-//       }else{
-//         const result = reviews.map((review) => {
-//               return <ReviewCard key={review.id}
-//                        deleteReviewCallback={this.deleteReviewCallback}
-//                        editReviewCallback={this.editReviewCallback}
-//                        {...review} />
-//          });
-//          return (
-//            <div className="card-group">
-//                {result}
-//            </div>
-//          )
-//       }
-//     }else{
-//       return (
-//         <div className="card-group">
-//             <p> Please log in</p>
-//         </div>
-//       )
-//
-//     }
-//
-// }
 
 ReviewList.propTypes = {
   user: PropTypes.object.isRequired,

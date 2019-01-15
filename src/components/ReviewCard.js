@@ -5,35 +5,39 @@ import './ReviewCard.css';
 
 
 const ReviewCard = (props) => {
-  const { id, dishName, rating, comment } = props;
-  console.log(props);
+  const { _id, dishName, rating, comment } = props;
+
+
   return (
     <div className="card review-card">
 
-    <section className="review-card--body">
-      <h3>{ dishName}</h3>
-      <p>{rating}</p>
-      <p>{comment}</p>
-    </section>
-    <section className="review-card--footer text-muted">
-      { }
-    </section>
-
       <section className="review-card--header">
-        <button
-          onClick={() => props.deleteReviewCallback(props.id)}
-          type="button"
-          className="btn btn-primary revie2-card--edit-review-btn"
 
-        >
-          Delete
-        </button>
-        <button
-          onClick={() => {props.editReviewCallback(props.id)}}
-          className="btn btn-primary revie2-card--edit-review-btn"
+      </section>
+
+      <section className="review-card--body">
+        <p>Dish Name: {dishName}</p>
+        <p>Rating: {rating}</p>
+        <p>Comment: {comment}</p>
+        <p>
+          <button
+            onClick={() => {props.deleteReviewCallback(_id)}}
+            className="btn btn-primary review-card--delete-review-btn"
           >
-            Edit
-        </button>
+            Delete
+          </button>
+        </p>
+        <p>
+          <button
+            onClick={() => {props.editReviewCallback(_id)}}
+            className="btn btn-primary review-card--edit-review-btn"
+            >
+              Edit
+          </button>
+        </p>
+      </section>
+      <section className="review-card--footer text-muted">
+        { }
       </section>
     </div>
   );
