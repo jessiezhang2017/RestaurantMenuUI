@@ -16,11 +16,11 @@ class ReviewList extends Component {
       // user: props.user,
       reviewList: [],
       masterList:[],
-      currentReview: undefined,
+      // currentReview: undefined,
 
     }
     this.deleteReview = this.deleteReview.bind(this);
-    this.editReview = this.editReview.bind(this);
+    // this.editReview = this.editReview.bind(this);
   }
 
   componentDidMount(){
@@ -74,11 +74,23 @@ class ReviewList extends Component {
     }
   }
 
-  editReview = (reviewId) => {
-
-
-
-  }
+  // editReview = (reviewId) => {
+  //   let editIndex = -1;
+  //   const reviews =[...this.state.masterList];
+  //
+  //   reviews.forEach((review, index) => {
+  //     if (reviewId === review.id) {
+  //       editIndex = index;
+  //     }
+  //   });
+  //
+  //   const editReview = reviews[editIndex];
+  //
+  //   this.setState({
+  //     currentReview: editReview,
+  //   })
+  //
+  // }
 
 
 
@@ -118,9 +130,11 @@ class ReviewList extends Component {
 
   render() {
     const reviewList = this.state.reviewList.map((review) => {
+
       return <ReviewCard key={review.id}
                deleteReviewCallback={this.deleteReview}
-               editReviewCallback={this.editReview}
+               // editReviewCallback={this.editReview}
+               // currentReviewOrNot={this.state.currentReview === review}
                {...review} />
     });
 
