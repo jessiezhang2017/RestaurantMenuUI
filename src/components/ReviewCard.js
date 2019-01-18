@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './ReviewCard.css';
-import ReviewEditForm from './ReviewEditForm';
 import RatingEditForm from './RatingEditForm';
 
 
@@ -12,14 +11,11 @@ class ReviewCard extends Component{
     super(props);
 
     this.state = {
-      reviewEdit: false,
+
       ratingEdit:false,
     };
   }
 
-  editReview = ()=> {
-    this.setState({reviewEdit:!this.state.reviewEdit})
-  }
 
   editRating = ()=> {
     this.setState({ratingEdit:!this.state.ratingEdit})
@@ -39,25 +35,17 @@ class ReviewCard extends Component{
           <p>Restaurant Name: {restaurantName}</p>
           <p>Dish Name: {dishName}</p>
           <p>Dish Rating: {rating}</p>
+          <p>Comment: {comment}</p>
           <p>
             <button
               // onClick={() => {props.editReviewCallback(_id)}}
               onClick={this.editRating}
               className="btn btn-primary review-card--edit-review-btn"
               >
-                Edit Rating
+                Edit
             </button>
           </p>
-          <p>Comment: {comment}</p>
-          <p>
-            <button
-              // onClick={() => {props.editReviewCallback(_id)}}
-              onClick={this.editReview}
-              className="btn btn-primary review-card--edit-review-btn"
-              >
-                Edit Review
-            </button>
-          </p>
+
           <p>
             <button
               onClick={() => {this.props.deleteReviewCallback(_id)}}
@@ -77,15 +65,6 @@ class ReviewCard extends Component{
             }
 
 
-            {this.state.reviewEdit?
-              <ReviewEditForm
-                editReviewCallback = {this.editReview}
-                {...this.props}
-              />
-              :
-              <p></p>
-            }
-           
         </section>
 
       </div>

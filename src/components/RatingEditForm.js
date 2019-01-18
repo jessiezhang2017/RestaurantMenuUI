@@ -11,8 +11,8 @@ class RatingEditForm extends Component {
     super(props);
 
     this.state = {
-      rating: null,
-
+      rating: this.props.rating,
+      comment: this.props.comment,
 
     };
   }
@@ -35,11 +35,11 @@ class RatingEditForm extends Component {
 
   onSubmit = (event) => {
     // event.preventDefault();
-    const { rating } = this.state;
-    const {_id, dishId, userId, userName, comment} = this.props;
+    const { rating ,comment} = this.state;
+    const {_id, dishId, userId, userName} = this.props;
     const url = "http://www.localhost:8080/reviews/"
 
-    if (rating === null || rating === "") return;
+    if (rating === this.props.rating && rating === this.props.comment) return;
 
     const apiPayload = {
       _id: _id,
@@ -71,7 +71,9 @@ class RatingEditForm extends Component {
         <form onSubmit={this.onSubmit} name="rating-edit-form" id="rating-edit-form" className="form-group">
           <div>
             <label className="rating-edit-form--label" htmlFor="rating">Rating</label>
-            <select type="text" className="form-control selcls " name="rating"  placeholder={this.props.rating} onChange={this.onFormChange} value={this.state.rating} >
+
+            <select type="text" className="form-control selcls " name="rating"  onChange={this.onFormChange} value={this.state.rating} >
+
               <option value="">null</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -79,6 +81,14 @@ class RatingEditForm extends Component {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
+          </div>
+
+          <div>
+            <label className="--label" htmlFor="comment">Comment</label>
+          </div>
+          <div>
+
+            <textarea className="review-edit-form--comment" name="comment"  onChange={this.onFormChange} value={this.state.comment}></textarea>
           </div>
 
           <input className="btn btn-primary rating-edit-form--submit" type="submit" name="submit" value="Submit" />
@@ -93,4 +103,6 @@ RatingEditForm.propTypes = {
 
 };
 
+  // <select type="text" className="form-control selcls " name="rating"  placeholder={this.props.rating} onChange={this.onFormChange} value={this.state.rating} >
+     // <textarea className="review-edit-form--comment" name="comment" placeholder={this.props.comment} onChange={this.onFormChange} value={this.state.comment}></textarea>
 export default RatingEditForm;
