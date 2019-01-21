@@ -16,6 +16,7 @@ class DishCard extends Component {
       reviewList:[],
       viewReview: false,
     };
+    this.changeReview = this.changeReview.bind(this);
   }
 
   componentDidMount() {
@@ -58,7 +59,8 @@ class DishCard extends Component {
   }
 
   changeReview = () => {
-    this.setState({viewReview:!this.state.viewReview})
+    this.setState({viewReview:!this.state.viewReview});
+    console.log(this.state.viewReview);
   }
 
 
@@ -67,6 +69,7 @@ class DishCard extends Component {
     const { name, overallRating} = this.props;
 
     const {reviewList, viewReview }= this.state;
+
     var avg = parseFloat(overallRating).toFixed(1);
 
     var size = null;
@@ -75,34 +78,35 @@ class DishCard extends Component {
       size = reviewList.length;
     }
 
-    const reviews = this.state.reviewList.map((review) => {
-
+    const reviews = reviewList.map((review) => {
       return (
-        <ul>
-          <li> rating: {review.rating} </li>
-          <li> comment: {review.comment}</li>
-          <li> witten by: {review.userName}</li>
-        </ul>
+        <div>
+          <p>rating test: {review.rating}</p>
+          <p>comment: {review.comment}</p>
+          <p>by: {review.userName}</p>
+        </div>
       )
     });
+
+    console.log(reviews.length);
 
     return (
       <div className="card dish-card">
 
           <section className="dish-card--details">
            { size?
-            <p>{name} : {avg}<button onChange ={this.changeReview}>view review details</button></p>
+            <p>{name} : {avg}<button onClick ={this.changeReview}>view review details</button></p>
             :
             <p>{name} : _ </p>
-            }
+           }
 
-            { viewReview?
+           { viewReview?
              <div>
-               <ul>{reviews}</ul>
+               {reviews}
              </div>
              :
              <p></p>
-             }
+           }
 
           </section>
 

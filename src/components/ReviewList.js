@@ -115,8 +115,7 @@ class ReviewList extends Component {
     axios.delete(URL2+reviewId)
 
     .then((response)=>{
-      console.log("delete completed");
-      console.log(reviewId);
+      
     })
     .catch((error)=>{
       this.setState({

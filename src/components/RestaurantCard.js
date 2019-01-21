@@ -49,9 +49,10 @@ class RestaurantCard extends Component {
     const { id, name, photo, location, overallRating, menuUrl } = this.props;
 
     const dish1 = this.state.dishList.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
-    const dishList = dish1.map((dish) => {
+    const size = dish1.length;
+    const dishes = dish1.map((dish) => {
 
-      return <DishCard key={dish.id}
+      return <DishCard key={dish._id}
                // deleteReviewCallback={this.deleteReview}
                // editReviewCallback={this.editReview}
                // currentReviewOrNot={this.state.currentReview === review}
@@ -74,9 +75,15 @@ class RestaurantCard extends Component {
 
                   <Link to={`/restaurant/${id}`}><button className="btn btn -info">view restaurant details</button></Link>
                  </section>
-                 <h6>Top Rating Dishes</h6>
-                 <p><span>Dish Name : Rating </span></p>
-                 {dishList}
+                   {(size > 0)?
+                   <div>
+                     <h6>Top Rating Dishes</h6>
+                     <p><span>Dish Name : Rating </span></p>
+                   </div>
+                   :
+                   <div></div>
+                 }
+                 {dishes}
 
             </div>
 

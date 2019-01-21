@@ -60,8 +60,8 @@ class RestaurantDetail extends Component {
 
     axios.get(url+id)
     .then((response) =>{
-      console.log("testjj");
-      console.log(response.data);
+
+    
       this.setState({
         dishList: response.data,
 
