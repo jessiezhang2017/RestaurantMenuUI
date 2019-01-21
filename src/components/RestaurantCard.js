@@ -16,7 +16,7 @@ class RestaurantCard extends Component {
 
     this.state = {
       dishList: [],
-      dishAddition: false,
+
     };
   }
 
@@ -28,8 +28,7 @@ class RestaurantCard extends Component {
 
     axios.get(url+id)
     .then((response) =>{
-      // console.log("test");
-      // console.log(response.data);
+
       this.setState({
         dishList: response.data,
 
@@ -44,16 +43,13 @@ class RestaurantCard extends Component {
 
   }
 
-  addDish = ()=> {
-    this.setState({dishAddition:!this.state.dishAddition})
-    
-  }
-
 
   render() {
 
     const { id, name, photo, location, overallRating, menuUrl } = this.props;
-    const dishList = this.state.dishList.map((dish) => {
+
+    const dish1 = this.state.dishList.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
+    const dishList = dish1.map((dish) => {
 
       return <DishCard key={dish.id}
                // deleteReviewCallback={this.deleteReview}
@@ -75,24 +71,12 @@ class RestaurantCard extends Component {
                    <p><strong>Restaurant Name: {name}</strong></p>
                    <p>Location: {location}</p>
                    <p>User rating: {overallRating}</p>
-                   <a rel="noopener noreferrer" href={menuUrl} target="_blank">Menu</a>
-                   <p><button
-                     onClick={this.addDish}
-                     className="btn btn-primary restaurant-card--add-dish-btn"
-                     >
-                       Add a dish
-                   </button></p>
+
+                  <Link to={`/restaurant/${id}`}><button className="btn btn -info">view restaurant details</button></Link>
                  </section>
+                 <h6>Top Rating Dishes</h6>
+                 <p><span>Dish Name : Rating </span></p>
                  {dishList}
-                 {this.state.dishAddition?
-                   <DishAddForm
-                     addDishCallback = {this.addDish}
-                     restaurantId = {this.props.id}
-                     restaurantName = {this.props.name}
-                   />
-                   :
-                   <p></p>
-                 }
 
             </div>
 
@@ -100,6 +84,7 @@ class RestaurantCard extends Component {
   }
 
 }
+
 
 RestaurantCard.propTypes = {
   id: PropTypes.number.isRequired,

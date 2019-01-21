@@ -12,22 +12,39 @@ class DishCard extends Component {
     super(props);
 
     this.state = {
-      dish: null,
-      
+
+      reviewList:[],
+      viewReview: false,
     };
   }
 
   componentDidMount() {
 
-    const {id} = this.props;
+    const {_id} = this.props;
 
-    const url = 'http://www.localhost:8080/menus/';
+    // const url = 'http://localhost:8080/menus/';
+    const url2 = 'http://localhost:8080/reviews/dishes/';
 
-    axios.get(url+id)
+    // axios.get(url+id)
+    // .then((response) =>{
+    //
+    //   this.setState({
+    //     dish: response.data,
+    //
+    //   });
+    // })
+    // .catch((error) => {
+    //   console.log(error.message);
+    //   this.setState({
+    //     errorMessage: error.message,
+    //   })
+    // });
+
+    axios.get(url2+_id)
     .then((response) =>{
-
+      console.log(response.data);
       this.setState({
-        dish: response.data,
+        reviewList: response.data,
 
       });
     })
@@ -36,31 +53,58 @@ class DishCard extends Component {
       this.setState({
         errorMessage: error.message,
       })
-    })
+    });
 
   }
 
+  changeReview = () => {
+    this.setState({viewReview:!this.state.viewReview})
+  }
 
 
   render() {
 
-    const { id, name, restaurantId, restaurantName } = this.props;
+    const { name, overallRating} = this.props;
 
+    const {reviewList, viewReview }= this.state;
+    var avg = parseFloat(overallRating).toFixed(1);
+
+    var size = null;
+
+    if(reviewList) {
+      size = reviewList.length;
+    }
+
+    const reviews = this.state.reviewList.map((review) => {
+
+      return (
+        <ul>
+          <li> rating: {review.rating} </li>
+          <li> comment: {review.comment}</li>
+          <li> witten by: {review.userName}</li>
+        </ul>
+      )
+    });
 
     return (
       <div className="card dish-card">
 
           <section className="dish-card--details">
-            <p><strong>Dish Name: {name}</strong></p>
-            <p><button
-              onClick={this.addReview}
-              className="btn btn-primary dish-card--add-dish-btn"
-              >
-                Add a review
-            </button></p>
+           { size?
+            <p>{name} : {avg}<button onChange ={this.changeReview}>view review details</button></p>
+            :
+            <p>{name} : _ </p>
+            }
+
+            { viewReview?
+             <div>
+               <ul>{reviews}</ul>
+             </div>
+             :
+             <p></p>
+             }
 
           </section>
-
 
       </div>
      );

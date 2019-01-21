@@ -30,10 +30,7 @@ class DishAddForm extends Component {
     const updatedState = {};
     updatedState[field] = value;
     this.setState(updatedState);
-    console.log("jessie");
-    console.log(value);
-    console.log(field);
-    console.log(this.state.dishName);
+
   }
 
   onSubmit = (event) => {

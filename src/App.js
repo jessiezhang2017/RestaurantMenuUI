@@ -6,6 +6,7 @@ import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SearchForm from './components/SearchForm';
 import ReviewList from './components/ReviewList';
 import RestaurantCard from './components/RestaurantCard';
+import RestaurantDetail from './components/RestaurantDetail';
 import Home from './components/Home';
 
 
@@ -13,9 +14,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-
       user: null,
-
     }
 
     this.login = this.login.bind(this);
@@ -64,7 +63,7 @@ class App extends Component {
         <div className="App">
           <header>
               <div className='wrapper'>
-                <h1>Lucky Gate</h1>
+                <h1>Foodie Finds</h1>
                 <ul>
                   <li>
                     <Link to="/">Home</Link>
@@ -99,7 +98,6 @@ class App extends Component {
           </header>
 
           <Route path="/" exact component={Home} />
-
           <Route path="/search/" render={()=>
              <
               SearchForm
@@ -109,12 +107,14 @@ class App extends Component {
             }
           />
           <Route path="/dashboard/" render={()=>
-            <
-            ReviewList
-            user={this.state.user}
-           />
-           }
+              <
+                ReviewList
+                user={this.state.user}
+              />
+            }
           />
+         <Route path="/restaurant/:id" render={(props) => <RestaurantDetail user={this.state.user} {...props} />} />
+
         </div>
      </Router>
     );

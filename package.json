@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "firebase": "^5.7.2",
+    "jw-react-pagination": "^1.0.7",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-router": "^4.3.1",

@@ -87,6 +87,7 @@ class SearchForm extends Component {
       location = {restaurant.location.address}
       overallRating = {restaurant.user_rating.aggregate_rating}
       menuUrl = {restaurant.menu_url}
+      user = {this.props.user}
       // addLibraryCallback={()=>this.addToLibrary(movie)}
       // addLibraryCallback={this.addLibraryCallback}
     />
@@ -143,12 +144,17 @@ class SearchForm extends Component {
             </p>
             <input type="submit" value="search" className="btn btn-success"/>
           </form>
+          <section class="pagination">
+            <button>previus</button>
+            <button>next</button>
+          </section>
       </section>
       <section className="search_result">
         {resultList}
       </section>
+
     </div>
-    );
+  );
   }
 }
 
