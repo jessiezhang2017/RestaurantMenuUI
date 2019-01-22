@@ -207,8 +207,8 @@ class SearchForm extends Component {
 }
 
 SearchForm.propTypes = {
-  uid: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
+  uid: PropTypes.string,
+  username: PropTypes.string,
 
 }
 export default SearchForm;

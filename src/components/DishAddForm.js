@@ -85,7 +85,9 @@ class DishAddForm extends Component {
 }
 
 DishAddForm.propTypes = {
-
+   restaurantId:PropTypes.string.isRequired,
+   restaurantName:PropTypes.string.isRequired,
+   addDishCallback:PropTypes.func.isRequired,
 };
 
   // <select type="text" className="form-control selcls " name="rating"  placeholder={this.props.rating} onChange={this.onFormChange} value={this.state.rating} >

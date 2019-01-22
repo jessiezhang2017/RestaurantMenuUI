@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
-import firebase, { auth, provider } from './firebase.js';
+
+import  { auth, provider } from './firebase.js';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SearchForm from './components/SearchForm';
 import ReviewList from './components/ReviewList';
-import RestaurantCard from './components/RestaurantCard';
+
 import RestaurantDetail from './components/RestaurantDetail';
 import Home from './components/Home';
 

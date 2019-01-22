@@ -100,7 +100,13 @@ class RatingEditForm extends Component {
 }
 
 RatingEditForm.propTypes = {
-
+  id: PropTypes.string.isRequired,
+  dishId: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  comment: PropTypes.string,
+  deleteReviewCallback: PropTypes.func.isRequired,
+  eidtReviewCallback: PropTypes.func.isRequired,
+  editRatingCallback: PropTypes.func.isRequired,
 };
 
   // <select type="text" className="form-control selcls " name="rating"  placeholder={this.props.rating} onChange={this.onFormChange} value={this.state.rating} >

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {BrowserRouter as  Link } from "react-router-dom";
 import axios from 'axios';
 import DishCard from './DishCard';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RestaurantCard.css';
-import DishAddForm from './DishAddForm';
+// import DishAddForm from './DishAddForm';
 
 
 class RestaurantCard extends Component {
@@ -46,9 +46,9 @@ class RestaurantCard extends Component {
 
   render() {
 
-    const { id, name, photo, location, overallRating, menuUrl } = this.props;
+    const { id, name, photo, location, overallRating } = this.props;
     const dishList = this.state.dishList;
-    const overallReview = dishList.filter(e => e.name === 'overall');
+    // const overallReview = dishList.filter(e => e.name === 'overall');
     const dishReview = dishList.filter(e => e.name !== 'overall');
 
     const dish1 = dishReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);

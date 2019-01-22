@@ -114,7 +114,9 @@ class ReviewAddForm extends Component {
 }
 
 ReviewAddForm.propTypes = {
-
+  user: PropTypes.string.isRequired,
+  dishList: PropTypes.string.isRequired,
+  addReviewCallback: PropTypes.func.isRequired,
 };
 
   // <select type="text" className="form-control selcls " name="rating"  placeholder={this.props.rating} onChange={this.onFormChange} value={this.state.rating} >

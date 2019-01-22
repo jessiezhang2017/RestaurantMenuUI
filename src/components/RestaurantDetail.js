@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import DishCard from './DishCard';
 
@@ -40,12 +40,12 @@ class RestaurantDetail extends Component {
 
     axios.get(url2+id)
     .then((response) =>{
-      const { id, name, photo} = response.data;
+      const { id, name, thumb} = response.data;
       this.setState({
         restaurantId: id,
         restaurantName: name,
         menuUrl: response.data.menu_url,
-        photo: response.data.thumb,
+        photo: thumb,
         overallRating: response.data.user_rating.aggregate_rating,
         location: response.data.location.address,
 
@@ -226,13 +226,7 @@ class RestaurantDetail extends Component {
 
 RestaurantDetail.propTypes = {
   id: PropTypes.number.isRequired,
-  // name: PropTypes.string.isRequired,
-  // photo: PropTypes.string.isRequired,
-  // menuUrl: PropTypes.string,
-  // overall_raing: PropTypes.number.isRequired,
-  // location: PropTypes.string,
-  // deletePetCallback: PropTypes.func.isRequired,
-  // selectPetCallback: PropTypes.func.isRequired,
+  user: PropTypes.object,
 }
 
 export default RestaurantDetail;
