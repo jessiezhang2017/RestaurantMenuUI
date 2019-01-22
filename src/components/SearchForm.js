@@ -14,11 +14,14 @@ class SearchForm extends Component {
     this.state = {
       user: props.user,
       cuisine:'',
-      restaurantSearchResult: []
+      restaurantSearchResult: [],
+      count: 0,
 
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getNext = this.getNext.bind(this);
+    this.getPrevious = this.getPrevious.bind(this);
   }
 
   handleChange = (e)=>{
@@ -31,16 +34,20 @@ class SearchForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+
     const url = 'http://localhost:8080/restaurants/cuisine/';
 
     const encoded = encodeURIComponent(this.state.cuisine);
 
-    axios.get(url+encoded)
+    var count = this.state.count;
+
+    axios.get(url+encoded+'/'+count)
      .then((response)=>{
 
        this.setState({
          restaurantSearchResult: response.data,
-         cuisine:"",
+         // cuisine:"",
+
        });
      })
      .catch((error)=>{
@@ -51,17 +58,23 @@ class SearchForm extends Component {
 
   }
 
-  getMenus = (menuId) => {
-    const url = 'http://localhost:8080/menus/';
-    const encoded = encodeURIComponent(menuId);
-    let result = [];
+  getNext = (event)=> {
+    event.preventDefault();
+    const url = 'http://localhost:8080/restaurants/cuisine/';
 
-    axios.get(url+encoded)
+    const encoded = encodeURIComponent(this.state.cuisine);
+
+    var count = this.state.count+20;
+
+
+    axios.get(url+encoded+'/'+count)
      .then((response)=>{
 
        this.setState({
          restaurantSearchResult: response.data,
-         cuisine:"",
+         // cuisine:"",
+         count:count,
+
        });
      })
      .catch((error)=>{
@@ -70,13 +83,49 @@ class SearchForm extends Component {
        });
      });
 
+  }
+
+
+  getNext = (event)=> {
+    event.preventDefault();
+    const url = 'http://localhost:8080/restaurants/cuisine/';
+
+    const encoded = encodeURIComponent(this.state.cuisine);
+
+    var count = this.state.count+20;
+
+
+    axios.get(url+encoded+'/'+count)
+     .then((response)=>{
+
+       this.setState({
+         restaurantSearchResult: response.data,
+         // cuisine:"",
+         count:count,
+
+       });
+     })
+     .catch((error)=>{
+       this.setState({
+         errorMessage: error.message,
+       });
+     });
 
   }
+
+  getPrevious = (event)=> {
+    var count = parseInt(this.state.count) - 20;
+    if (count<0){
+      count = 0;
+    };
+    this.setState({count:count});
+
+  }
+
 
   render() {
 
     const resultList = this.state.restaurantSearchResult.map((restaurant)=>{
-
 
 
     return <RestaurantCard
@@ -143,12 +192,11 @@ class SearchForm extends Component {
               </select>
             </p>
             <input type="submit" value="search" className="btn btn-success"/>
+            <button className="btn btn -info" onClick={this.getPrevious}>previous</button>
+            <button className="btn btn -info" onClick={this.getNext}>next</button>
           </form>
-          <section class="pagination">
-            <button>previus</button>
-            <button>next</button>
-          </section>
       </section>
+
       <section className="search_result">
         {resultList}
       </section>
