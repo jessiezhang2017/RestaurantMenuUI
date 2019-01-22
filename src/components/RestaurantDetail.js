@@ -31,7 +31,8 @@ class RestaurantDetail extends Component {
   }
 
   componentDidMount() {
-
+    console.log("ttttt");
+    console.log(this.props);
     const {id} = this.props.match.params;
 
     // const url = 'http://www.localhost:8080/menus/restaurants/';
