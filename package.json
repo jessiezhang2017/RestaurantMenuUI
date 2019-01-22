@@ -2,7 +2,7 @@
   "name": "menu_ui",
   "version": "0.1.0",
   "private": true,
-  "homepage":"http://jessiezhang2017.github.io/Restaurant_Menu_UI/",
+  "homepage":"https://jessiezhang2017.github.io/Restaurant_Menu_UI/",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
