@@ -47,12 +47,15 @@ class RestaurantCard extends Component {
   render() {
 
     const { id, name, photo, location, overallRating, menuUrl } = this.props;
+    const dishList = this.state.dishList;
+    const overallReview = dishList.filter(e => e.name === 'overall');
+    const dishReview = dishList.filter(e => e.name !== 'overall');
 
-    const dish1 = this.state.dishList.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
+    const dish1 = dishReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
     const size = dish1.length;
     const dishes = dish1.map((dish) => {
 
-      return <DishCard key={dish._id}
+      return <DishCard key={dish.id}
                // deleteReviewCallback={this.deleteReview}
                // editReviewCallback={this.editReview}
                // currentReviewOrNot={this.state.currentReview === review}
@@ -71,7 +74,7 @@ class RestaurantCard extends Component {
                  <section className="restaurant-card--details">
                    <p><strong>Restaurant Name: {name}</strong></p>
                    <p>Location: {location}</p>
-                   <p>User rating: {overallRating}</p>
+                   <p>Zomatio User rating: {overallRating}</p>
 
                   <Link to={`/restaurant/${id}`}><button className="btn btn -info">view restaurant details</button></Link>
                  </section>

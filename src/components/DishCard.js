@@ -15,6 +15,7 @@ class DishCard extends Component {
 
       reviewList:[],
       viewReview: false,
+
     };
     this.changeReview = this.changeReview.bind(this);
   }
@@ -60,7 +61,7 @@ class DishCard extends Component {
 
   changeReview = () => {
     this.setState({viewReview:!this.state.viewReview});
-    console.log(this.state.viewReview);
+
   }
 
 
@@ -88,14 +89,19 @@ class DishCard extends Component {
       )
     });
 
-    console.log(reviews.length);
 
     return (
       <div className="card dish-card">
 
           <section className="dish-card--details">
            { size?
-            <p>{name} : {avg}<button onClick ={this.changeReview}>view review details</button></p>
+            <p>{name} : {avg}
+              { viewReview?
+                <button className = "btn btn -info" onClick ={this.changeReview}>collapse</button>
+                :
+                <button className = "btn btn -info" onClick ={this.changeReview}>view review details</button>
+              }
+            </p>
             :
             <p>{name} : _ </p>
            }

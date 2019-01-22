@@ -57,6 +57,7 @@ class DishAddForm extends Component {
       this.props.addDishCallback();
       this.resetState();
 
+
     })
     .catch((error)=>{
       this.setState({

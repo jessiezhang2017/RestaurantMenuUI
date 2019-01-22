@@ -40,16 +40,17 @@ class ReviewAddForm extends Component {
     // event.preventDefault();
 
     const {dishId, rating, comment} = this.state;
-    const {uid, displayName} = this.props.user;
+    const {uid, displayName, photoURL} = this.props.user;
     const url = "http://www.localhost:8080/reviews/";
 
-    if (dishId === null || rating === "" || comment ==="") return;
+    if (dishId === null || rating === "" ) return;
 
     const apiPayload = {
 
       dishId: dishId,
       userId: uid,
       userName: displayName,
+      userImg: photoURL,
       rating: rating,
       comment: comment,
 
