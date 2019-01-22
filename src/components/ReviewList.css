@@ -1,8 +1,0 @@
-.reviewlist {
-  display:flex;
-  flex-direction: column;
-}
-
-.review-title{
-  margin: 40px;
-}
