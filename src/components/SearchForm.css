@@ -1,1 +1,9 @@
 
+.search {
+  margin-top: 3%;
+}
+
+.form-control .selcls {
+  width: 2%;
+  flex:none;
+}

@@ -62,39 +62,45 @@ class App extends Component {
       <Router>
         <div className="App">
           <header>
-              <div className='wrapper'>
-                <h1>Foodie Finds</h1>
-                <ul>
-                  <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/search">Search</Link>
-                  </li>
-                  {this.state.user ?
-                    <li>
-                      <Link to="/dashboard">Dashboard</Link>
-                    </li>
-                    :
-                    <li></li>
-                    }
-                </ul>
-                {this.state.user ?
-                  <div className='user-profile'>
-                      <img src={this.state.user.photoURL} alt='user'/>
-                  </div>
-                  :
-                  <div>
-                    <p></p>
-                  </div>
-                  }
+              <nav className="navbar navbar-expand-lg navbar-dark bg">
+                <h1 className="navbar-brand">Foodie Finds</h1>
 
-                {this.state.user ?
-                 <button onClick={this.logout}>Log Out</button>
-                  :
-                 <button onClick={this.login}>Log In</button>
-                  }
-              </div>
+                <div className="collapse navbar-collapse" id="navbarColor01">
+                  <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                      <Link to="/" className="nav-link">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="/search" className="nav-link">Search</Link>
+                    </li>
+                    {this.state.user ?
+                      <li className="nav-item">
+                        <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                      </li>
+                      :
+                      <li></li>
+                      }
+                  </ul>
+                  {this.state.user ?
+                    <div className='user-profile'>
+                        <div className='nav-item user-name'>{this.state.user.displayName}  </div>
+                    </div>
+                    :
+                    <div>
+
+                    </div>
+                    }
+
+                   <section className="log">
+
+                      {this.state.user ?
+                       <button className="btn btn-secondary my-2 my-sm-0" onClick={this.logout}>Log Out</button>
+                        :
+                       <button className="btn btn-secondary my-2 my-sm-0" onClick={this.login}>Log In</button>
+                        }
+                    </section>
+                </div>
+              </nav>
           </header>
 
           <Route path="/" exact component={Home} />

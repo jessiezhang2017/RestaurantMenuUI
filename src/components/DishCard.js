@@ -91,7 +91,7 @@ class DishCard extends Component {
 
 
     return (
-      <div className="card dish-card">
+      <div className="dish-card">
 
           <section className="dish-card--details">
            { size?

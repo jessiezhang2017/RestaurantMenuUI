@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './SearchForm.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-// import {BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-// import ReviewList from './components/ReviewList';
+// import ReviewList from './ReviewList';
 import RestaurantCard from './RestaurantCard';
 
 
@@ -142,12 +142,13 @@ class SearchForm extends Component {
     />
   });
 
+
     return (
       <div className='search'>
         <section className='container'>
           <form className="form-group" onSubmit={this.handleSubmit}>
-            <p>
-              <select type="text" className="form-control selcls" name="cuisine" value={this.cuisine} onChange={this.handleChange} >
+            <div className="input-group mb-3">
+              <select type="text" className="selcls" name="cuisine" value={this.cuisine} onChange={this.handleChange} >
                 <option value="">Select cuisine</option>
                 <option value="152">Africa</option>
                 <option value="1">America</option>
@@ -190,11 +191,12 @@ class SearchForm extends Component {
                 <option value="99">Vietnamese</option>
                 <option value="308">Vegetarian</option>
               </select>
-            </p>
-            <input type="submit" value="search" className="btn btn-success"/>
-            <button className="btn btn -info" onClick={this.getPrevious}>previous</button>
-            <button className="btn btn -info" onClick={this.getNext}>next</button>
-          </form>
+
+            <input type="submit" value="search" className="input-group-append"/>
+            <button className="input-group-append" onClick={this.getPrevious}>&laquo;</button>
+            <button className="input-group-append" onClick={this.getNext}>&raquo;</button>
+          </div>
+        </form>
       </section>
 
       <section className="search_result">
