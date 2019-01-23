@@ -219,7 +219,7 @@ class RestaurantDetail extends Component {
 
                    </div>
                    :
-                   <p> Please log in to write reviews </p>
+                   <p class="text-danger"> Please log in to write reviews </p>
                  }
 
 
