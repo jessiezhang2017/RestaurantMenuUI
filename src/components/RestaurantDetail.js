@@ -165,11 +165,6 @@ class RestaurantDetail extends Component {
                  <section className="restaurant-detail--details">
                    <h3>{this.state.restaurantName}</h3>
                    <p>Address: {this.state.location}</p>
-                   <Rating
-                     placeholderRating={this.state.overallRating}
-                     fraction={5}
-                     className="rating"
-                     />
                     <p>
                      <a rel="noopener noreferrer" href={this.state.menuUrl} target="_blank">Menu</a>
                     </p>

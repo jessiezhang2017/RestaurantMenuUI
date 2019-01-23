@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import axios from 'axios';
-
+import Rating from 'react-rating';
 import './DishCard.css';
 
 
@@ -95,7 +95,15 @@ class DishCard extends Component {
 
           <section className="dish-card--details">
            { size?
-            <div>{name} : {avg}
+            <div>{name} :
+            <Rating
+              placeholderRating={avg}
+              fraction={5}
+              placeholderSymbol="fa fa-star fa-1x"
+              emptySymbol="fa fa-star-o fa-1x"
+              fullSymbol="fa fa-star fa-1x"
+              />
+
               { viewReview?
                 <button className = "badge badge-secondary" onClick ={this.changeReview}>collapse</button>
                 :

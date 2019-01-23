@@ -47,15 +47,27 @@ class RestaurantCard extends Component {
 
   render() {
 
-    const { id, name, photo, location, overallRating } = this.props;
+    const { id, name, photo, location } = this.props;
     const dishList = this.state.dishList;
-    // const overallReview = dishList.filter(e => e.name === 'overall');
-    const dishReview = dishList.filter(e => e.name !== 'overall');
+    const overallReview = dishList.filter(e => e.name === 'overall');
+    const overall = overallReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
+    const sizeO= overall.length;
+    const restaurantOverall = overall.map((dish) => {
 
+      return <DishCard key={dish.id}
+               // deleteReviewCallback={this.deleteReview}
+               // editReviewCallback={this.editReview}
+               // currentReviewOrNot={this.state.currentReview === review}
+               {...dish} />
+
+    });
+
+
+
+    const dishReview = dishList.filter(e => e.name !== 'overall');
     const dish1 = dishReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
     const size = dish1.length;
     const dishes = dish1.map((dish) => {
-      console.log(dish.overallRating);
 
       return <DishCard key={dish.id}
                // deleteReviewCallback={this.deleteReview}
@@ -75,14 +87,10 @@ class RestaurantCard extends Component {
                  </section>
 
                  <section className="restaurant-card--details">
-                 <Rating
-                   placeholderRating={overallRating}
-                   fraction={5}
-                   className="rating"
-                   />
+
                   <h3><Link to={`/restaurant/${id}`}>{name}</Link></h3>
                   <p>Address: {location}</p>
-                
+                {restaurantOverall}
 
                  {dishes}
                 </section>

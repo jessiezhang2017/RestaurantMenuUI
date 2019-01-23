@@ -43,7 +43,7 @@ class ReviewAddForm extends Component {
     const {uid, displayName, photoURL} = this.props.user;
     const url = "http://www.localhost:8080/reviews/";
 
-    if (dishId === null || rating === "" ) return;
+    if (dishId === null || dishId==="" ||rating === "" ||rating ===null) return;
 
     const apiPayload = {
 
@@ -84,6 +84,7 @@ class ReviewAddForm extends Component {
         <div>
           <label className="review-add-form--label" htmlFor="dishId">Dish Name</label>
           <select type="text" className="form-control selcls " name="dishId"  onChange={this.onFormChange} value={this.state.dishId} >
+          <option  value = ""></option>
             {resultList}
           </select>
         </div>
@@ -91,7 +92,7 @@ class ReviewAddForm extends Component {
           <div>
             <label className="review-add-form--label" htmlFor="rating">Rating</label>
             <select type="text" className="form-control selcls " name="rating"  onChange={this.onFormChange} value={this.state.rating} >
-              <option value="">null</option>
+              <option value=""></option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
