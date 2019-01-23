@@ -81,11 +81,11 @@ class DishCard extends Component {
 
     const reviews = reviewList.map((review) => {
       return (
-        <div>
-          <p>rating test: {review.rating}</p>
-          <p>comment: {review.comment}</p>
-          <p>by: {review.userName}</p>
-        </div>
+        <ul>
+         <li><strong>{review.userName} :</strong></li>
+          <li>rating: {review.rating}</li>
+          <li>comment: {review.comment}</li>
+        </ul>
       )
     });
 
@@ -95,23 +95,22 @@ class DishCard extends Component {
 
           <section className="dish-card--details">
            { size?
-            <p>{name} : {avg}
+            <div>{name} : {avg}
               { viewReview?
-                <button className = "btn btn -info" onClick ={this.changeReview}>collapse</button>
+                <button className = "badge badge-secondary" onClick ={this.changeReview}>collapse</button>
                 :
-                <button className = "btn btn -info" onClick ={this.changeReview}>view review details</button>
+                <button className = "badge badge-secondary" onClick ={this.changeReview}>expand</button>
               }
-            </p>
+            </div>
             :
-            <p>{name} : _ </p>
+            <div></div>
            }
-
            { viewReview?
              <div>
                {reviews}
              </div>
              :
-             <p></p>
+             <div></div>
            }
 
           </section>

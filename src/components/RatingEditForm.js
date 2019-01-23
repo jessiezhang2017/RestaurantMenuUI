@@ -65,6 +65,12 @@ class RatingEditForm extends Component {
     });
   }
 
+  // <div class="form-group">
+  //      <label for="exampleTextarea">Example textarea</label>
+  //      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  //    </div>
+
+
   render() {
     return (
       <section className="rating-edit-container">
@@ -84,14 +90,13 @@ class RatingEditForm extends Component {
           </div>
 
           <div>
-            <label className="--label" htmlFor="comment">Comment</label>
+            <label className="label" htmlFor="comment">Comment</label>
           </div>
           <div>
-
-            <textarea className="review-edit-form--comment" name="comment"  onChange={this.onFormChange} value={this.state.comment}></textarea>
+            <textarea className="form-control" rows="3" name="comment"  onChange={this.onFormChange} value={this.state.comment}></textarea>
           </div>
 
-          <input className="btn btn-primary rating-edit-form--submit" type="submit" name="submit" value="Submit" />
+          <input className="btn btn-secondary rating-edit-form--submit" type="submit" name="submit" value="Submit" />
         </form>
       </section>
     );

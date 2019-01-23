@@ -73,10 +73,10 @@ class DishAddForm extends Component {
 
           <div>
             <label className="dish-add-form--label" htmlFor="dishName">Dish Name</label>
-            <input className="dish-add-form--dishName" name="dishName" placeholder="dish name" onChange={this.onFormChange} value={this.state.dishName} />
+            <input className="form-control dish-add-form--dishName" name="dishName" placeholder="dish name" onChange={this.onFormChange} value={this.state.dishName} />
           </div>
 
-          <input className="btn btn-primary dish-add-form--submit" type="submit" name="submit" value="Submit" />
+          <input className="btn btn-secondary dish-add-form--submit" type="submit" name="submit" value="Submit" />
         </form>
       </section>
     );

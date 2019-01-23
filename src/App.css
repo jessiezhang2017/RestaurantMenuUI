@@ -21,7 +21,7 @@ body {
 }
 
 .log {
-  margin-left: 2%;
+  /* margin-left: 2%; */
 }
 
 .user-name {
@@ -30,8 +30,8 @@ body {
 
 }
 
-/* .user-profile img {
+.user-profile-img {
   border-radius: 50%;
-  max-width: 10%;
+  max-width: 7%;
 
-} */
+}

@@ -110,18 +110,18 @@ class ReviewList extends Component {
       reviewList: reviews,
     })
 
-
-
     axios.delete(URL2+reviewId)
 
     .then((response)=>{
-      
+
     })
     .catch((error)=>{
       this.setState({
         errorMessage: error.message,
       });
     });
+
+    window.location.reload();
 
   }
 
@@ -139,8 +139,10 @@ class ReviewList extends Component {
 
     return (
       <div className="reviewlist">
-        <h3 className="review-title">Reviews</h3>
-        {reviewList}
+        <h1 className="review-title">Reviews</h1>
+        <section className="review-body">
+          {reviewList}
+        </section>
       </div>
     );
   }

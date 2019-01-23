@@ -6,3 +6,10 @@
 .review-title{
   margin: 40px;
 }
+
+.review-body{
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+
+}

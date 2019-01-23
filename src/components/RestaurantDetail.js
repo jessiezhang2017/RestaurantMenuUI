@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './RestaurantDetail.css';
 import DishAddForm from './DishAddForm';
 import ReviewAddForm from './ReviewAddForm';
-
+import Rating from 'react-rating';
 
 class RestaurantDetail extends Component {
 
@@ -156,28 +156,33 @@ class RestaurantDetail extends Component {
 
     return (
 
-          <div className="card restaurant-card">
+          <div className="restaurant-detail">
 
-                 <section className="restaurant-card--img">
+                 <section className="restaurant-detail--img">
                    <img src={this.state.photo} alt="food_post"/>
                  </section>
 
-                 <section className="restaurant-card--details">
-                   <p><strong>Restaurant Name: {this.state.restaurantName}</strong></p>
-                   <p>Location: {this.state.location}</p>
-                   <p>Zomato User rating: {this.state.overallRating}</p>
-                   <a rel="noopener noreferrer" href={this.state.menuUrl} target="_blank">Menu</a>
-
+                 <section className="restaurant-detail--details">
+                   <h3>{this.state.restaurantName}</h3>
+                   <p>Address: {this.state.location}</p>
+                   <Rating
+                     placeholderRating={this.state.overallRating}
+                     fraction={5}
+                     className="rating"
+                     />
+                    <p>
+                     <a rel="noopener noreferrer" href={this.state.menuUrl} target="_blank">Menu</a>
+                    </p>
                  </section>
-                   <p><strong>Dish List : rating</strong></p>
+
                    {overallReview}
                    {dishList}
 
                  {this.props.user?
-                   <div>
+                   <div class="buttons">
                      <p><button
                        onClick={this.addDish}
-                       className="btn btn-primary restaurant-detail--add-dish-btn"
+                       className="btn btn-secondary restaurant-detail--add-dish-btn"
                        >Add a dish</button></p>
 
                      {this.state.dishAddition?
@@ -192,14 +197,14 @@ class RestaurantDetail extends Component {
                       <p><button
                         onClick={this.addReview}
 
-                        className="btn btn-primary restaurant-detail--add-review-btn"
+                        className="btn btn-secondary restaurant-detail--add-review-btn"
                         >Add a review </button></p>
                      {!check?
                       <p><button
                           onClick={this.addOverall}
 
-                          className="btn btn-primary restaurant-detail--add-review-btn"
-                          >Add an overall review item</button></p>:<p></p>
+                          className="btn btn-secondary restaurant-detail--add-review-btn"
+                          >overall review?</button></p>:<p></p>
                       }
                       {this.state.reviewAddition?
                           <ReviewAddForm

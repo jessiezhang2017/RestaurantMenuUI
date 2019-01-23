@@ -25,22 +25,22 @@ class ReviewCard extends Component{
     const { _id, dishName, rating, comment, restaurantName} = this.props;
 
     return (
-      <div className="card review-card">
+      <div className="review-card">
 
         <section className="review-card--header">
 
         </section>
 
         <section className="review-card--body">
-          <p>Restaurant Name: {restaurantName}</p>
-          <p>Dish Name: {dishName}</p>
-          <p>Dish Rating: {rating}</p>
-          <p>Comment: {comment}</p>
+          <h3>Restaurant Name: {restaurantName}</h3>
+          <p><strong>Dish Name:</strong> {dishName}</p>
+          <p><strong>Dish Rating:</strong> {rating}</p>
+          <p><strong>Comment:</strong> {comment}</p>
           <p>
             <button
               // onClick={() => {props.editReviewCallback(_id)}}
               onClick={this.editRating}
-              className="btn btn-primary review-card--edit-review-btn"
+              className="btn btn-secondary review-card--edit-review-btn"
               >
                 Edit
             </button>
@@ -49,7 +49,7 @@ class ReviewCard extends Component{
           <p>
             <button
               onClick={() => {this.props.deleteReviewCallback(_id)}}
-              className="btn btn-primary review-card--delete-review-btn"
+              className="btn btn-secondary review-card--delete-review-btn"
             >
               Delete
             </button>

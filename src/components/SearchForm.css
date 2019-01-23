@@ -7,3 +7,10 @@
   width: 2%;
   flex:none;
 }
+
+.search_result {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:2%;
+}

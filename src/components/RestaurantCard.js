@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import DishCard from './DishCard';
+import Rating from 'react-rating';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RestaurantCard.css';
@@ -54,40 +55,37 @@ class RestaurantCard extends Component {
     const dish1 = dishReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
     const size = dish1.length;
     const dishes = dish1.map((dish) => {
+      console.log(dish.overallRating);
 
       return <DishCard key={dish.id}
                // deleteReviewCallback={this.deleteReview}
                // editReviewCallback={this.editReview}
                // currentReviewOrNot={this.state.currentReview === review}
                {...dish} />
+
     });
 
 
     return (
 
-          <div className="card restaurant-card">
+          <div className="restaurant-card">
 
                  <section className="restaurant-card--img">
                    <img src={photo} alt="food_post"/>
                  </section>
 
                  <section className="restaurant-card--details">
-                   <p><strong>Restaurant Name: {name}</strong></p>
-                   <p>Location: {location}</p>
-                   <p>Zomatio User rating: {overallRating}</p>
 
-                  <Link to={`/restaurant/${id}`}><button className="btn btn -info">view restaurant details</button></Link>
-                 </section>
-                   {(size > 0)?
-                   <div>
-                     <h6>Top Rating Dishes</h6>
-                     <p><span>Dish Name : Rating </span></p>
-                   </div>
-                   :
-                   <div></div>
-                 }
+                  <h3><Link to={`/restaurant/${id}`}>{name}</Link></h3>
+                  <p>Address: {location}</p>
+                  <Rating
+                    placeholderRating={overallRating}
+                    fraction={5}
+                    className="rating"
+                    />
+
                  {dishes}
-
+                </section>
             </div>
 
     );

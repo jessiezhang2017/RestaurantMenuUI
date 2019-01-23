@@ -102,10 +102,10 @@ class ReviewAddForm extends Component {
 
           <div>
             <label className="review-add-form--label" htmlFor="rating">Comment</label>
-            <input className="review-add-form--comment" name="comment" placeholder="comment" onChange={this.onFormChange} value={this.state.comment} />
+            <textarea className="form-control" rows="3" name="comment" placeholder="comment" onChange={this.onFormChange} value={this.state.comment} />
           </div>
 
-          <input className="btn btn-primary review-add-form--submit" type="submit" name="submit" value="Submit" />
+          <input className="btn btn-secondary review-add-form--submit" type="submit" name="submit" value="Submit" />
         </form>
       </section>
     );
