@@ -75,14 +75,14 @@ class RestaurantCard extends Component {
                  </section>
 
                  <section className="restaurant-card--details">
-
+                 <Rating
+                   placeholderRating={overallRating}
+                   fraction={5}
+                   className="rating"
+                   />
                   <h3><Link to={`/restaurant/${id}`}>{name}</Link></h3>
                   <p>Address: {location}</p>
-                  <Rating
-                    placeholderRating={overallRating}
-                    fraction={5}
-                    className="rating"
-                    />
+                
 
                  {dishes}
                 </section>

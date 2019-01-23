@@ -1,3 +1,7 @@
 ul{
   list-style-type: none;
 }
+
+.badge-secondary {
+  margin-bottom:  1%
+}
