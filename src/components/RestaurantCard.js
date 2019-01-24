@@ -26,7 +26,7 @@ class RestaurantCard extends Component {
     const {id} = this.props;
 
     // const url = 'http://www.localhost:8080/menus/restaurants/';
-   const url = process.env.REACT_APP_BACKEND_URL+"http://www.localhost:8080/menus/restaurants/";
+   const url = process.env.REACT_APP_BACKEND_URL+"menus/restaurants/";
 
     axios.get(url+id)
     .then((response) =>{
@@ -91,8 +91,7 @@ class RestaurantCard extends Component {
 
                   <h3><Link to={`/restaurant/${id}`}>{name}</Link></h3>
                   <p>Address: {location}</p>
-                {restaurantOverall}
-
+                 {restaurantOverall}
                  {dishes}
                 </section>
             </div>
