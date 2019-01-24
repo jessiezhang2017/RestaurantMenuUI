@@ -5,8 +5,8 @@ import axios from 'axios';
 import './ReviewList.css';
 
 
-const URL = 'http://www.localhost:8080/reviews/users/';
-const URL2 = 'http://www.localhost:8080/reviews/';
+const URL = process.env.REACT_APP_BACKEND_URL+'reviews/users/';
+const URL2 = process.env.REACT_APP_BACKEND_URL+'reviews/';
 
 
 class ReviewList extends Component {

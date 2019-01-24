@@ -25,7 +25,8 @@ class RestaurantCard extends Component {
 
     const {id} = this.props;
 
-    const url = 'http://www.localhost:8080/menus/restaurants/';
+    // const url = 'http://www.localhost:8080/menus/restaurants/';
+   const url = process.env.REACT_APP_BACKEND_URL+"http://www.localhost:8080/menus/restaurants/";
 
     axios.get(url+id)
     .then((response) =>{

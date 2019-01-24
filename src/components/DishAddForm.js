@@ -39,7 +39,8 @@ class DishAddForm extends Component {
 
     const {dishName} = this.state;
     const {restaurantId, restaurantName} = this.props;
-    const url = "http://www.localhost:8080/menus/";
+
+    const url = process.env.REACT_APP_BACKEND_URL+"menus/";
 
     if (dishName === null || dishName === "") return;
 

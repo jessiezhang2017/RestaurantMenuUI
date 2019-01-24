@@ -35,7 +35,7 @@ class SearchForm extends Component {
     event.preventDefault();
 
 
-    const url = 'http://localhost:8080/restaurants/cuisine/';
+    const url = process.env.REACT_APP_BACKEND_URL+'restaurants/cuisine/';
 
     const encoded = encodeURIComponent(this.state.cuisine);
 
@@ -60,7 +60,7 @@ class SearchForm extends Component {
 
   getNext = (event)=> {
     event.preventDefault();
-    const url = 'http://localhost:8080/restaurants/cuisine/';
+    const url = process.env.REACT_APP_BACKEND_URL+'restaurants/cuisine/';
 
     const encoded = encodeURIComponent(this.state.cuisine);
 
@@ -88,7 +88,7 @@ class SearchForm extends Component {
 
   getNext = (event)=> {
     event.preventDefault();
-    const url = 'http://localhost:8080/restaurants/cuisine/';
+    const url = process.env.REACT_APP_BACKEND_URL+'restaurants/cuisine/';
 
     const encoded = encodeURIComponent(this.state.cuisine);
 

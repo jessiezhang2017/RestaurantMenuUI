@@ -36,7 +36,7 @@ class RestaurantDetail extends Component {
     const {id} = this.props.match.params;
 
     // const url = 'http://www.localhost:8080/menus/restaurants/';
-    const url2 = 'http://www.localhost:8080/restaurants/';
+    const url2 = process.env.REACT_APP_BACKEND_URL+'restaurants/';
 
     axios.get(url2+id)
     .then((response) =>{
@@ -78,7 +78,7 @@ class RestaurantDetail extends Component {
 
  getDishList = () => {
    const {id} = this.props.match.params;
-   const url = 'http://www.localhost:8080/menus/restaurants/';
+   const url = process.env.REACT_APP_BACKEND_URL+'menus/restaurants/';
    axios.get(url+id)
    .then((response) =>{
 
@@ -107,7 +107,7 @@ class RestaurantDetail extends Component {
   addOverall =() => {
 
       const {restaurantId, restaurantName} = this.state;
-      const url = "http://www.localhost:8080/menus/";
+      const url = process.env.REACT_APP_BACKEND_URL+"menus/";
 
       const apiPayload = {
         name: "overall",

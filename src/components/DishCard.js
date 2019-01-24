@@ -25,7 +25,7 @@ class DishCard extends Component {
     const {_id} = this.props;
 
     // const url = 'http://localhost:8080/menus/';
-    const url2 = 'http://localhost:8080/reviews/dishes/';
+    const url2 = process.env.REACT_APP_BACKEND_URL+'reviews/dishes/';
 
     // axios.get(url+id)
     // .then((response) =>{

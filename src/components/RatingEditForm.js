@@ -37,7 +37,7 @@ class RatingEditForm extends Component {
     // event.preventDefault();
     const { rating ,comment} = this.state;
     const {_id, dishId, userId, userName} = this.props;
-    const url = "http://www.localhost:8080/reviews/"
+    const url = process.env.REACT_APP_BACKEND_URL + "reviews/"
 
     if (rating === this.props.rating && rating === this.props.comment) return;
 

@@ -41,7 +41,7 @@ class ReviewAddForm extends Component {
 
     const {dishId, rating, comment} = this.state;
     const {uid, displayName, photoURL} = this.props.user;
-    const url = "http://www.localhost:8080/reviews/";
+    const url = process.env.REACT_APP_BACKEND_URL+"reviews/";
 
     if (dishId === null || dishId==="" ||rating === "" ||rating ===null) return;
 
