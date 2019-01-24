@@ -8,6 +8,7 @@ const config = {
   projectId: "restaurant-menu-ui",
   storageBucket: "restaurant-menu-ui.appspot.com",
   messagingSenderId: process.env.REACT_APP_FIREBASE_ID,
+  // messagingSenderId: "226933753045",
 };
 firebase.initializeApp(config);
 
