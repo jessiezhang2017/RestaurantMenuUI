@@ -25,6 +25,49 @@ class ReviewCard extends Component{
     const { _id, dishName, rating, comment, restaurantName} = this.props;
 
     return (
+      // <div className="review-card">
+      //
+      //   <section className="review-card--header">
+      //
+      //   </section>
+      //
+      //   <section className="review-card--body">
+      //     <h3>Restaurant Name: {restaurantName}</h3>
+      //     <p><strong>Dish Name:</strong> {dishName}</p>
+      //     <p><strong>Dish Rating:</strong> {rating}</p>
+      //     <p><strong>Comment:</strong> {comment}</p>
+      //     <p>
+      //       <button
+      //         // onClick={() => {props.editReviewCallback(_id)}}
+      //         onClick={this.editRating}
+      //         className="btn btn-secondary review-card--edit-review-btn"
+      //         >
+      //           Edit
+      //       </button>
+      //     </p>
+      //
+      //     <p>
+      //       <button
+      //         onClick={() => {this.props.deleteReviewCallback(_id)}}
+      //         className="btn btn-secondary review-card--delete-review-btn"
+      //       >
+      //         Delete
+      //       </button>
+      //     </p>
+      //
+      //       {this.state.ratingEdit?
+      //         <RatingEditForm
+      //           editRatingCallback = {this.editRating}
+      //           {...this.props}
+      //         />
+      //         :
+      //         <p></p>
+      //       }
+      //
+      //
+      //   </section>
+      //
+      // </div>
       <div className="review-card">
 
         <section className="review-card--header">
@@ -32,11 +75,12 @@ class ReviewCard extends Component{
         </section>
 
         <section className="review-card--body">
-          <h3>Restaurant Name: {restaurantName}</h3>
-          <p><strong>Dish Name:</strong> {dishName}</p>
-          <p><strong>Dish Rating:</strong> {rating}</p>
-          <p><strong>Comment:</strong> {comment}</p>
-          <p>
+          <h5>Restaurant Name: {restaurantName}</h5>
+          <div className="review-card--items">
+            <p>Item Name: {dishName}</p>
+            <p>Item Rating: {rating}</p>
+            <p>Comment:{comment}</p>
+          </div>
             <button
               // onClick={() => {props.editReviewCallback(_id)}}
               onClick={this.editRating}
@@ -44,27 +88,26 @@ class ReviewCard extends Component{
               >
                 Edit
             </button>
-          </p>
 
-          <p>
+
             <button
               onClick={() => {this.props.deleteReviewCallback(_id)}}
               className="btn btn-secondary review-card--delete-review-btn"
             >
               Delete
             </button>
-          </p>
 
+            <p>
+            <p></p>
             {this.state.ratingEdit?
               <RatingEditForm
                 editRatingCallback = {this.editRating}
                 {...this.props}
               />
               :
-              <p></p>
+              <div></div>
             }
-
-
+            </p>
         </section>
 
       </div>

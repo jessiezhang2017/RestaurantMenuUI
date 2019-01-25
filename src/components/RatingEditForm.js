@@ -39,7 +39,7 @@ class RatingEditForm extends Component {
     const {_id, dishId, userId, userName} = this.props;
     const url = process.env.REACT_APP_BACKEND_URL + "reviews/"
 
-    if (rating === this.props.rating && rating === this.props.comment) return;
+    if (rating === this.props.rating && comment === this.props.comment) return;
 
     const apiPayload = {
       _id: _id,
