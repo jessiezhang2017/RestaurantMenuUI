@@ -51,8 +51,8 @@ class RestaurantCard extends Component {
     const { id, name, photo, location } = this.props;
     const dishList = this.state.dishList;
     const overallReview = dishList.filter(e => e.name === 'overall');
-    const overall = overallReview.sort((a, b) => parseInt(b.overallRating) - parseInt(a.overallRating)).slice(0,3);
-    const size1= overall.length;
+    const overall = overallReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
+    const sizeO= overall.length;
     const restaurantOverall = overall.map((dish) => {
 
       return <DishCard key={dish.id}
@@ -66,7 +66,7 @@ class RestaurantCard extends Component {
 
 
     const dishReview = dishList.filter(e => e.name !== 'overall');
-    const dish1 = dishReview.sort((a, b) => parseInt(b.overallRating) - parseInt(a.overallRating)).slice(0,3);
+    const dish1 = dishReview.sort((a, b) => b.overallRating - a.overallRating).slice(0,3);
     const size = dish1.length;
     const dishes = dish1.map((dish) => {
 
@@ -89,7 +89,7 @@ class RestaurantCard extends Component {
 
                  <section className="restaurant-card--details">
 
-                  <h3><Link to={`/restaurant/${id}`}>{name}</Link></h3>
+                  <h4><Link to={`/restaurant/${id}`}>{name}</Link></h4>
                   <p>Address: {location}</p>
                  {restaurantOverall}
                  {dishes}
