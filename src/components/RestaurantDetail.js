@@ -143,7 +143,7 @@ class RestaurantDetail extends Component {
 
     const dishReview = dishTotal.filter(e => e.name !== 'overall');
 
-      const dish1 = dishReview.sort((a, b) => b.overallRating - a.overallRating);
+      const dish1 = dishReview.sort((a, b) => parseInt(b.overallRating) - parseInt(a.overallRating));
       const dishList = dish1.map((dish) => {
         return <DishCard key={dish._id}
                // deleteReviewCallback={this.deleteReview}
