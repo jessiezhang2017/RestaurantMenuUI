@@ -92,7 +92,7 @@ class RestaurantCard extends Component {
                   <h3><Link to={`/restaurant/${id}`}>{name}</Link></h3>
                   <p>Address: {location}</p>
                  {restaurantOverall}
-                 
+                 {dishes}
                 </section>
             </div>
 
